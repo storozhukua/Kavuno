@@ -9,13 +9,11 @@ export const MainContext = React.createContext();
 export default () => {
     return (
         <TimerProvider>
-            <MainContext.Provider value={{type: 'work'}}>
                 <Container fluid="sm">
                     
                     <Timer/>
                     
                 </Container>
-            </MainContext.Provider>
         </TimerProvider>
     )
 }

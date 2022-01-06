@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import config from '../../app-config'
 
 const timerContext = React.createContext();
 
@@ -10,25 +11,14 @@ export const TimerProvider = ({ children }) => {
 
         setcurrentKey(() => key)
     }
-
-    const type =[
-        {
-            duration: 0.1 * 60,
-            title: 'Work'
-        },
-        {
-            duration: 0.2 * 60,
-            title: 'Rest'
-        }
-    ]
-
+    
     const [currentKey, setcurrentKey] = useState(0);
 
     return (
         <timerContext.Provider 
             value={{
                     currentKey, 
-                    type,
+                    types: config.types,
                     handleCurrentKey
                 }}>
 

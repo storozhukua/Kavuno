@@ -10,7 +10,7 @@ export default () => {
     
     const timer = useTimer();
 
-    const TYPE = timer.type;
+    const TYPE = timer.types;
     const CURRENT_KEY = timer.currentKey;
 
     const statTime = useRef(TYPE[CURRENT_KEY].duration)
@@ -45,17 +45,16 @@ export default () => {
     const finish = () => {
         stop();
 
-        const nextKey = (TYPE[CURRENT_KEY + 1]) ? CURRENT_KEY + 1 : 0;
+        const NEXT_KEY = (TYPE[CURRENT_KEY + 1]) ? CURRENT_KEY + 1 : 0;
 
-        timer.handleCurrentKey(nextKey);
+        timer.handleCurrentKey(NEXT_KEY);
 
-        statTime.current = TYPE[nextKey].duration;
+        statTime.current = TYPE[NEXT_KEY].duration;
 
         console.log('finish');
         setCurrentime(() => statTime.current)
 
         var audio = new Audio(song);
-        console.log(audio)
         audio.play();
     }
 

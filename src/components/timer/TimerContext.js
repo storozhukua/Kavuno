@@ -17,7 +17,7 @@ export const TimerProvider = ({ children }) => {
     return (
         <timerContext.Provider 
             value={{
-                    currentKey, 
+                    currentKey,
                     types: config.types,
                     handleCurrentKey
                 }}>

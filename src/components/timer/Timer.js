@@ -1,4 +1,5 @@
 import {useEffect, useState, useRef} from 'react';
+import { useMainLayout } from '../../contexts/LayoutContext'
 import { useTimer } from './TimerContext'
 import {Button} from 'react-bootstrap';
 import './timer.scss'
@@ -9,11 +10,12 @@ import song from "./../../static/a.mp3";
 export default () => {
     
     const timer = useTimer();
+    const mainDate = useMainLayout()
+    console.log('timer');
 
-    const TYPE = timer.types;
+    const OPTIONS = timer.types;
     const CURRENT_KEY = timer.currentKey;
-
-    const statTime = useRef(TYPE[CURRENT_KEY].duration)
+    const statTime = useRef(OPTIONS[CURRENT_KEY].duration)
 
     const [currentTime, setCurrentime] = useState(statTime.current);
 
@@ -23,7 +25,6 @@ export default () => {
     const NEXT_MINUTE_POINT = statTime.current - (statTime.current - MINUTES * 60);
     const SECONDS = (currentTime - NEXT_MINUTE_POINT) ? (currentTime - NEXT_MINUTE_POINT) : '0.0';
     let timeOut = null;
-  
 
     const stop = () => {
         clearTimeout(timeOut);
@@ -40,21 +41,22 @@ export default () => {
         }
 
         return () => clearTimeout(timeOut)
-    });
+    }, [currentTime, isRun]);
 
     const finish = () => {
         stop();
 
-        const NEXT_KEY = (TYPE[CURRENT_KEY + 1]) ? CURRENT_KEY + 1 : 0;
+        const NEXT_KEY = (OPTIONS[CURRENT_KEY + 1]) ? CURRENT_KEY + 1 : 0;
 
         timer.handleCurrentKey(NEXT_KEY);
 
-        statTime.current = TYPE[NEXT_KEY].duration;
+        statTime.current = OPTIONS[NEXT_KEY].duration;
 
         console.log('finish');
         setCurrentime(() => statTime.current)
 
         var audio = new Audio(song);
+        setReport(OPTIONS[CURRENT_KEY]);
         audio.play();
     }
 
@@ -79,6 +81,10 @@ export default () => {
 
     const clickStop = () => {
         stop();
+    }
+
+    const setReport = (obj) => {
+        mainDate.handlerReport(obj)
     }
 
     return (

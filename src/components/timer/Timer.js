@@ -11,19 +11,19 @@ export default () => {
     
     const timer = useTimer();
     const mainDate = useMainLayout()
-    console.log('timer');
 
     const OPTIONS = timer.types;
     const CURRENT_KEY = timer.currentKey;
-    const statTime = useRef(OPTIONS[CURRENT_KEY].duration)
+    const duration = useRef(OPTIONS[CURRENT_KEY].duration)
+    const startTime = useRef(0);
 
-    const [currentTime, setCurrentime] = useState(statTime.current);
+    const [timerTime, setTimerTime] = useState(duration.current);
 
     const [isRun, setIsRun] = useState(false);
     
-    const MINUTES = Math.floor(currentTime / 60);
-    const NEXT_MINUTE_POINT = statTime.current - (statTime.current - MINUTES * 60);
-    const SECONDS = (currentTime - NEXT_MINUTE_POINT) ? (currentTime - NEXT_MINUTE_POINT) : '0.0';
+    const MINUTES = Math.floor(timerTime / 60);
+    const NEXT_MINUTE_POINT = duration.current - (duration.current - MINUTES * 60);
+    const SECONDS = (timerTime - NEXT_MINUTE_POINT) ? (timerTime - NEXT_MINUTE_POINT) : '0.0';
     let timeOut = null;
 
     const stop = () => {
@@ -34,14 +34,14 @@ export default () => {
     useEffect(() => {
         if (!isRun) return;
         
-        if(currentTime === 0) {
+        if(timerTime <= 0) {
             finish();
         } else {
             start();
         }
 
         return () => clearTimeout(timeOut)
-    }, [currentTime, isRun]);
+    }, [timerTime, isRun]);
 
     const finish = () => {
         stop();
@@ -50,10 +50,9 @@ export default () => {
 
         timer.handleCurrentKey(NEXT_KEY);
 
-        statTime.current = OPTIONS[NEXT_KEY].duration;
+        duration.current = OPTIONS[NEXT_KEY].duration;
 
-        console.log('finish');
-        setCurrentime(() => statTime.current)
+        setTimerTime(() => duration.current)
 
         var audio = new Audio(song);
         setReport(OPTIONS[CURRENT_KEY]);
@@ -69,12 +68,19 @@ export default () => {
     }
 
     const start = () => {
+
         timeOut = setTimeout(() => {
-            setCurrentime(() => currentTime - 1)
+            const CURRENT_TIME = Math.floor(Date.now() / 1000); // Unix timestamp in seconds
+
+            const T = duration.current - (CURRENT_TIME - startTime.current)
+
+            setTimerTime(() => T)
         }, 1000);
     }
 
     const clickStart = () => {
+        startTime.current = Math.floor(Date.now() / 1000); // Unix timestamp in seconds
+
         setIsRun(true);
         start();
     }
@@ -88,10 +94,10 @@ export default () => {
     }
 
     return (
-        <>
+        <div className="mt-3">
             <Title/>
-            <p>{MINUTES} : {SECONDS}</p>
+            <p className="mt-4">{MINUTES} : {SECONDS}</p>
             {Btn()}
-        </>
+        </div>
     )
 }

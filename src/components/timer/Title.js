@@ -5,6 +5,6 @@ export default () => {
     const timer = useTimer();
 
     return (
-        <p>{timer.types[timer.currentKey].title}</p>
+        <p className="h6">Now is {timer.types[timer.currentKey].type}ing time</p>
     )
 }

@@ -1,7 +1,7 @@
 export default {
         types: [
             {
-                duration: 5 * 60,
+                duration: 15 * 60,
                 title: 'Work',
                 type: 'work'
             },

@@ -57,6 +57,7 @@ export default () => {
         var audio = new Audio(song);
         setReport(OPTIONS[CURRENT_KEY]);
         audio.play();
+        startTime.current = 0;
     }
 
     const Btn = () => {
@@ -79,7 +80,7 @@ export default () => {
     }
 
     const clickStart = () => {
-        startTime.current = Math.floor(Date.now() / 1000); // Unix timestamp in seconds
+        startTime.current = Math.floor(Date.now() / 1000) - (duration.current - timerTime); // Unix timestamp in seconds
 
         setIsRun(true);
         start();

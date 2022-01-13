@@ -10,8 +10,8 @@ export default () => {
                 <thead>
                     <tr>
                         <th scope="col">Date</th>
-                        <th scope="col">Summary working time</th>
-                        <th scope="col">Summary resting timest</th>
+                        <th scope="col">Working time</th>
+                        <th scope="col">Resting time</th>
                     </tr>
                 </thead>
                 <tbody>

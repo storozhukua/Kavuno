@@ -1,4 +1,5 @@
 import Timer from '../timer/Timer'
+import Options from '../options/Options'
 
 import { TimerProvider } from '../timer/TimerContext'
 import { LayoutProvider } from '../../contexts/LayoutContext'
@@ -12,7 +13,6 @@ export const MainContext = React.createContext();
 
 export default () => {
     const mainData = useMainLayout();
-    
 
     return (
         <LayoutProvider>
@@ -20,6 +20,7 @@ export default () => {
                 
                 <TimerProvider>
                     <Timer/>
+                    <Options/>
                 </TimerProvider>
                 
                 <Report/>

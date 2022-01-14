@@ -13,16 +13,16 @@ export default () => {
     const mainDate = useMainLayout()
 
     const OPTIONS = timer.types;
-    const CURRENT_KEY = timer.currentKey;
-    const duration = useRef(OPTIONS[CURRENT_KEY].duration)
+    const CURRENT_KEY = timer.currentKey
+    let duration = OPTIONS[CURRENT_KEY].duration
     const startTime = useRef(0);
 
-    const [timerTime, setTimerTime] = useState(duration.current);
+    const [timerTime, setTimerTime] = useState(duration);
 
     const [isRun, setIsRun] = useState(false);
     
     const MINUTES = Math.floor(timerTime / 60);
-    const NEXT_MINUTE_POINT = duration.current - (duration.current - MINUTES * 60);
+    const NEXT_MINUTE_POINT = duration - (duration - MINUTES * 60);
     const SECONDS = (timerTime - NEXT_MINUTE_POINT) ? (timerTime - NEXT_MINUTE_POINT) : '0.0';
     let timeOut = null;
 
@@ -41,7 +41,11 @@ export default () => {
         }
 
         return () => clearTimeout(timeOut)
-    }, [timerTime, isRun]);
+    });
+
+    useEffect(() => {
+        setTimerTime(() => duration)
+    }, [OPTIONS]);
 
     const finish = () => {
         stop();
@@ -50,9 +54,9 @@ export default () => {
 
         timer.handleCurrentKey(NEXT_KEY);
 
-        duration.current = OPTIONS[NEXT_KEY].duration;
+        duration = OPTIONS[NEXT_KEY].duration;
 
-        setTimerTime(() => duration.current)
+        setTimerTime(() => duration)
 
         var audio = new Audio(song);
         setReport(OPTIONS[CURRENT_KEY]);
@@ -73,14 +77,14 @@ export default () => {
         timeOut = setTimeout(() => {
             const CURRENT_TIME = Math.floor(Date.now() / 1000); // Unix timestamp in seconds
 
-            const T = duration.current - (CURRENT_TIME - startTime.current)
+            const T = duration - (CURRENT_TIME - startTime.current)
 
             setTimerTime(() => T)
         }, 1000);
     }
 
     const clickStart = () => {
-        startTime.current = Math.floor(Date.now() / 1000) - (duration.current - timerTime); // Unix timestamp in seconds
+        startTime.current = Math.floor(Date.now() / 1000) - (duration - timerTime); // Unix timestamp in seconds
 
         setIsRun(true);
         start();

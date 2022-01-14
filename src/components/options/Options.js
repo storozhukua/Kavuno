@@ -42,7 +42,7 @@ export default () => {
                                             className="form-control" 
                                             id={timer.types[item].type}
                                             defaultValue={timer.types[item].duration / 60}
-                                            {...register(timer.types[item].type, { required: true })}/>
+                                            {...register(timer.types[item].type, { required: true, min: 1 })}/>
                                         {errors.rest && <p className="mt-2" role="alert">{timer.types[item].title} is required.</p>}
                                     </div>
                                 </div>

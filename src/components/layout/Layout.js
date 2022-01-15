@@ -16,15 +16,17 @@ export default () => {
 
     return (
         <LayoutProvider>
+            
             <Container fluid="sm">
                 
                 <TimerProvider>
                     <Timer/>
                     <Options/>
                 </TimerProvider>
-                
+
                 <Report/>
             </Container>
+
         </LayoutProvider>
     )
 }

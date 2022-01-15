@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import useLocalStorage from "use-local-storage";
 import config from '../../app-config'
 
 const timerContext = React.createContext();
@@ -7,16 +8,15 @@ export const useTimer = () => useContext(timerContext);
 
 export const TimerProvider = ({ children }) => {
 
-    const [types, setTypes] = useState(config.types);
-
     const handleCurrentKey = (key) => {
 
-        setcurrentKey(() => key)
+        setcurrentKey(() => key) 
     }
 
-    const handlerSetTypes = (arr) => {
-        console.log(arr);
-        setTypes((prev) => arr)
+    const [options, setOptions] = useLocalStorage('options', config.options);
+
+    const handlersetOptions = (arr) => {
+        setOptions((prev) => arr)
     }
     
     const [currentKey, setcurrentKey] = useState(0);
@@ -25,9 +25,9 @@ export const TimerProvider = ({ children }) => {
         <timerContext.Provider
             value={{
                     currentKey,
-                    types,
+                    options,
                     handleCurrentKey,
-                    handlerSetTypes
+                    handlersetOptions
                 }}>
 
             { children }

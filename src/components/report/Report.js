@@ -1,4 +1,5 @@
 import { useMainLayout } from '../../contexts/LayoutContext'
+import convertHM from '../../utils/convertHM/convertHM'
 
 export default () => {
     const mainDate = useMainLayout()
@@ -19,8 +20,8 @@ export default () => {
                         return (
                             <tr key={i}>
                                 <td>{item}</td>
-                                <td>{mainDate.report[item].work / 60} min.</td>
-                                <td>{mainDate.report[item].rest / 60} min.</td>
+                                <td>{convertHM(mainDate.report[item].work)} </td>
+                                <td>{convertHM(mainDate.report[item].rest)}</td>
                             </tr>
                         )
                     })}

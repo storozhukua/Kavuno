@@ -13,15 +13,15 @@ export default () => {
       } = useForm({mode: 'onChange', nativeValidation: false,})
       const onSubmit = (data) => {
 
-        const types = Object.keys(timer.types).map((item, i) => {
-            const current = timer.types[item]
+        const options = Object.keys(timer.options).map((item, i) => {
+            const current = timer.options[item]
 
             current.duration = parseInt(data[current.type]) * 60
 
             return current
         })
 
-        timer.handlerSetTypes(types)
+        timer.handlersetOptions(options)
         
     }
 
@@ -31,19 +31,19 @@ export default () => {
                 <div className="mt-5">
                     <p className="h5">Options</p>
 
-                    {Object.keys(timer.types).map((item, i) => {
+                    {Object.keys(timer.options).map((item, i) => {
                         return (
                             <div key={i+'-type'}>
                                 <div className="form-group mb-3">
-                                    <div className={errors[timer.types[item].type] && 'error'}>
-                                        <label for={timer.types[item].type}><b>Set {timer.types[item].type} time (min.)</b></label>
+                                    <div className={errors[timer.options[item].type] && 'error'}>
+                                        <label for={timer.options[item].type}><b>Set {timer.options[item].type} time (min.)</b></label>
                                         <input 
                                             type="number" 
                                             className="form-control" 
-                                            id={timer.types[item].type}
-                                            defaultValue={timer.types[item].duration / 60}
-                                            {...register(timer.types[item].type, { required: true, min: 1 })}/>
-                                        {errors.rest && <p className="mt-2" role="alert">{timer.types[item].title} is required.</p>}
+                                            id={timer.options[item].type}
+                                            defaultValue={timer.options[item].duration / 60}
+                                            {...register(timer.options[item].type, { required: true, min: 1 })}/>
+                                        {errors.rest && <p className="mt-2" role="alert">{timer.options[item].title} is required.</p>}
                                     </div>
                                 </div>
                             </div>

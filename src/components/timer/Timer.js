@@ -12,7 +12,7 @@ export default () => {
     const timer = useTimer();
     const mainDate = useMainLayout()
 
-    const OPTIONS = timer.types;
+    const OPTIONS = timer.options;
     const CURRENT_KEY = timer.currentKey
     let duration = OPTIONS[CURRENT_KEY].duration
     const startTime = useRef(0);

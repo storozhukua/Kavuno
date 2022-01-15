@@ -1,5 +1,5 @@
 export default {
-        types: [
+        options: [
             {
                 duration: 15 * 60,
                 title: 'Work',

@@ -1,8 +1,10 @@
 import { useMainLayout } from '../../contexts/LayoutContext'
 import convertHM from '../../utils/convertHM/convertHM'
+import './report.scss'
 
 export default () => {
     const mainDate = useMainLayout()
+    const CURRENT_DAY = new Date().toLocaleDateString(); 
 
     return (
         <div className="mt-5">
@@ -16,9 +18,11 @@ export default () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {Object.keys(mainDate.report).map((item, i)=>{
+                    {Object.keys(mainDate.report).reverse().map((item, i)=>{
+                        const PARENT_CLASS_NAME = (CURRENT_DAY === item) ? 'today' : ''
+
                         return (
-                            <tr key={i}>
+                            <tr key={i} className={PARENT_CLASS_NAME}>
                                 <td>{item}</td>
                                 <td>{convertHM(mainDate.report[item].work)} </td>
                                 <td>{convertHM(mainDate.report[item].rest)}</td>

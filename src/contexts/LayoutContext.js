@@ -6,7 +6,7 @@ const layoutContext = React.createContext();
 export const useMainLayout = () => useContext(layoutContext);
 
 export const LayoutProvider = ({ children }) => {
-    const INITIAL_DAY = new Date().toISOString().slice(0,10);
+    const INITIAL_DAY = new Date().toLocaleDateString();
 
     const initialValue = {};
     initialValue[INITIAL_DAY] = {
@@ -17,7 +17,7 @@ export const LayoutProvider = ({ children }) => {
     const [report, setReport] = useLocalStorage('report', initialValue);
 
     const handlerReport = (obj) => {
-        const CURRENT_DAY = new Date().toISOString().slice(0,10);
+        const CURRENT_DAY = new Date().toLocaleDateString();
 
         if(!report[CURRENT_DAY]) {
             report[CURRENT_DAY] = {

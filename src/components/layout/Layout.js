@@ -25,8 +25,8 @@ export default () => {
                 </TimerProvider>
 
                 <Report/>
+                <a href="https://github.com/storozhukua/Kavuno" target="_blank">https://github.com/storozhukua/Kavuno</a>
             </Container>
-
         </LayoutProvider>
     )
 }

@@ -1,6 +1,6 @@
 import {useEffect, useState, useRef} from 'react';
 import { useMainLayout } from '../../contexts/LayoutContext'
-import { useTimer } from './TimerContext'
+import { useTimer } from '../../contexts/TimerContext'
 import {Button} from 'react-bootstrap';
 import './timer.scss'
 import Title from './Title';
@@ -8,7 +8,6 @@ import song from "./../../static/70f710c5da4b165-1.mp3";
 
 
 export default () => {
-    
     const timer = useTimer();
     const mainDate = useMainLayout()
 

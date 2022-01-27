@@ -1,9 +1,7 @@
 import { useForm } from 'react-hook-form'
 import {Accordion} from 'react-bootstrap'
-import { useTimer } from '../timer/TimerContext'
-import {useRef} from 'react'
+import { useTimer } from '../../contexts/TimerContext'
 import {Button} from 'react-bootstrap'
-import { useAccordionButton } from 'react-bootstrap/AccordionButton';
 import './options.scss'
 
 export default () => {

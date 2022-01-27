@@ -1,9 +1,9 @@
 import Timer from '../timer/Timer'
 import Options from '../options/Options'
 
-import { TimerProvider } from '../timer/TimerContext'
-import { LayoutProvider } from '../../contexts/LayoutContext'
-import { useMainLayout } from '../../contexts/LayoutContext'
+import { TimerProvider } from '../../contexts/TimerContext'
+import { LayoutProvider, useMainLayout } from '../../contexts/LayoutContext'
+
 import React, {useEffect, useState} from 'react';
 
 import {Container, Row, Col} from 'react-bootstrap';

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import useLocalStorage from "use-local-storage";
-import config from '../../app-config'
+import config from '../app-config'
 
 const timerContext = React.createContext();
 

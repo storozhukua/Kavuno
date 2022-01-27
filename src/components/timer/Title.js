@@ -1,4 +1,4 @@
-import { useTimer } from './TimerContext'
+import { useTimer } from '../../contexts/TimerContext'
 
 export default () => {
 

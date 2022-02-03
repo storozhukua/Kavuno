@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import useLocalStorage from "use-local-storage";
+import config from '../app-config'
 
 const layoutContext = React.createContext();
 
@@ -11,7 +12,8 @@ export const LayoutProvider = ({ children }) => {
     const initialValue = {};
     initialValue[INITIAL_DAY] = {
         'rest': 0, 
-        'work': 0
+        'work': 0,
+        'learn': 0,
     };
 
     const [report, setReport] = useLocalStorage('report', initialValue);
@@ -41,7 +43,6 @@ export const LayoutProvider = ({ children }) => {
                     report,
                     handlerReport
                 }}>
-
             { children }
         </layoutContext.Provider>
     )

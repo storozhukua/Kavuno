@@ -13,8 +13,7 @@ export default () => {
         formState: { errors },
       } = useForm({mode: 'onChange', nativeValidation: false,})
       const onSubmit = (data) => {
-
-
+          
         const options = Object.keys(timer.options).map((item, i) => {
             const current = timer.options[item]
 
@@ -23,12 +22,20 @@ export default () => {
             return current
         })
 
+        //update current type (work/learn)
+        options[0].type = data.type
+
         timer.handlersetOptions(options)
         
     }
 
-  
-   
+    let cheEl = (`<div className="form-check">
+            <input className="form-check-input" type="checkbox" value=""  
+            defaultChecked="checked"/>
+            <label className="form-check-label"
+                Checked checkbox
+            </label>
+        </div>`);
 
     return (
         <>
@@ -38,11 +45,20 @@ export default () => {
                         <Accordion.Item eventKey="1">
                             <Accordion.Header><b>Options</b></Accordion.Header>
                             <Accordion.Body>
+                                <div className="form-group mb-3">
+                                    <label for="type"><b>Change to:</b></label>
+                                    <select id="type" {...register('type', { required: true})} className="form-select" aria-label="Default select">
+                                        <option value="work" selected>Working time</option>
+                                        <option value="learn">Learning time</option>
+                                    </select>
+                                </div>
                                 {Object.keys(timer.options).map((item, i) => {
                                     return (
                                         <div key={i+'-type'}>
+                                           
                                             <div className="form-group mb-3">
                                                 <div className={errors[timer.options[item].type] && 'error'}>
+                                                    
                                                     <label for={timer.options[item].type}><b>Set {timer.options[item].type} time (min.)</b></label>
                                                     <input 
                                                         type="number" 

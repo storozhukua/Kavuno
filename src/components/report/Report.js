@@ -15,6 +15,7 @@ export default () => {
                         <th scope="col">Date</th>
                         <th scope="col">Working time</th>
                         <th scope="col">Resting time</th>
+                        <th scope="col">Learning time</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,6 +27,7 @@ export default () => {
                                 <td>{item}</td>
                                 <td>{convertHM(mainDate.report[item].work)} </td>
                                 <td>{convertHM(mainDate.report[item].rest)}</td>
+                                <td>{convertHM(mainDate.report[item].learn)}</td>
                             </tr>
                         )
                     })}

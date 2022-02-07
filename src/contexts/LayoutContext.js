@@ -24,7 +24,8 @@ export const LayoutProvider = ({ children }) => {
         if(!report[CURRENT_DAY]) {
             report[CURRENT_DAY] = {
                 'rest': 0, 
-                'work': 0
+                'work': 0,
+                'learn': 0,
             };
         }
 

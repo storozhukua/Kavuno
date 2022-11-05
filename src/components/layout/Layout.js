@@ -8,6 +8,7 @@ import React, {useEffect, useState} from 'react';
 
 import {Container, Row, Col} from 'react-bootstrap';
 import Report from '../report/Report';
+import Header from '../header/Header'
 
 export const MainContext = React.createContext();
 
@@ -16,9 +17,8 @@ export default () => {
 
     return (
         <LayoutProvider>
-            
             <Container fluid="sm">
-                
+                <Header />
                 <TimerProvider>
                     <Timer/>
                     <Options/>

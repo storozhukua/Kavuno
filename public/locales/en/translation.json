@@ -1,0 +1,26 @@
+{
+  "title": {
+    "general_work": "Working",
+    "general_learn": "Learning",
+    "general_rest": "Resting"
+  },
+  "options": {
+    "title": "Options",
+    "labelChangeTo": "Change to",
+    "labelTypeTime_work": "Set time for working, (min)",
+    "labelTypeTime_learn": "Set time for learning, (min)",
+    "labelTypeTime_rest": "Set time for resting, (min)",
+    "save": "Save"
+  },
+  "report": {
+    "title": "Statistics",
+    "labelDate": "Date",
+    "labelWorking": "Working time",
+    "labelLearning": "Learning time",
+    "labelRestinging": "Resting time"
+  },
+  "description": {
+    "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
+    "part2": "Switch language between english and german using buttons above."
+  }
+}

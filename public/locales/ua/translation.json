@@ -1,0 +1,30 @@
+{
+  "title": {
+    "general_work": "Працюю",
+    "general_learn": "Навчаюсь",
+    "general_rest": "Відпочіваю"
+  },
+  "timerTitle": {
+    "working": "Працювати",
+    "learning": "Навчатись"
+  },
+  "options": {
+    "title": "Налаштування",
+    "labelChangeTo": "Змінити на",
+    "labelTypeTime_work": "Задати час для роботи, (хв)",
+    "labelTypeTime_learn": "Задати час для навчання, (хв)",
+    "labelTypeTime_rest": "Задати час для відпочинку, (хв)",
+    "save": "Зберегти"
+  },
+  "report": {
+    "title": "Статистика",
+    "labelDate": "Дата",
+    "labelWorking": "Рабочий час",
+    "labelLearning": "Навчальний час",
+    "labelRestinging": "Відпочінок"
+  },
+  "description": {
+    "part1": "Um loszulegen, ändere <1>src/App(DE).js</1> und speichere um neuzuladen.",
+    "part2": "Wechsle die Sprache zwischen deutsch und englisch mit Hilfe der beiden Schalter."
+  }
+}

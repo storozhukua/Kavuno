@@ -1,21 +1,23 @@
 import { useMainLayout } from '../../contexts/LayoutContext'
 import convertHM from '../../utils/convertHM/convertHM'
 import './report.scss'
+import { useTranslation } from 'react-i18next'
 
 export default () => {
     const mainDate = useMainLayout()
     const CURRENT_DAY = new Date().toLocaleDateString(); 
+    const { t, i18n } = useTranslation();
 
     return (
         <div className="mt-5">
-            <p className="h5">Report</p>
+            <p className="h5">{t('report.title')}</p>
             <table className="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">Date</th>
-                        <th scope="col">Working time</th>
-                        <th scope="col">Resting time</th>
-                        <th scope="col">Learning time</th>
+                        <th scope="col">{t('report.labelDate')}</th>
+                        <th scope="col">{t('report.labelWorking')}</th>
+                        <th scope="col">{t('report.labelLearning')}</th>
+                        <th scope="col">{t('report.labelRestinging')}</th>
                     </tr>
                 </thead>
                 <tbody>

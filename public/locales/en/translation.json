@@ -4,6 +4,10 @@
     "general_learn": "Learning",
     "general_rest": "Resting"
   },
+  "timerTitle": {
+    "working": "Working",
+    "learning": "Learning"
+  },
   "options": {
     "title": "Options",
     "labelChangeTo": "Change to",

@@ -4,7 +4,7 @@ import './report.scss'
 import { useTranslation } from 'react-i18next'
 
 export default () => {
-    const mainDate = useMainLayout()
+    const mainData = useMainLayout()
     const CURRENT_DAY = new Date().toLocaleDateString(); 
     const { t, i18n } = useTranslation();
 
@@ -21,15 +21,15 @@ export default () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {Object.keys(mainDate.report).reverse().map((item, i)=>{
+                    {Object.keys(mainData.report).reverse().map((item, i)=>{
                         const PARENT_CLASS_NAME = (CURRENT_DAY === item) ? 'today' : ''
 
                         return (
                             <tr key={i} className={PARENT_CLASS_NAME}>
                                 <td>{item}</td>
-                                <td>{convertHM(mainDate.report[item].work)} </td>
-                                <td>{convertHM(mainDate.report[item].rest)}</td>
-                                <td>{convertHM(mainDate.report[item].learn)}</td>
+                                <td>{convertHM(mainData.report[item].work)} </td>
+                                <td>{convertHM(mainData.report[item].learn)}</td>
+                                <td>{convertHM(mainData.report[item].rest)}</td>
                             </tr>
                         )
                     })}

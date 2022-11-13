@@ -20,7 +20,6 @@ export const LayoutProvider = ({ children }) => {
 
     const handlerReport = (obj) => {
         const CURRENT_DAY = new Date().toLocaleDateString();
-
         if(!report[CURRENT_DAY]) {
             report[CURRENT_DAY] = {
                 'rest': 0, 
@@ -31,11 +30,10 @@ export const LayoutProvider = ({ children }) => {
 
         const val = report[CURRENT_DAY][obj.type] + obj.duration;
 
-        report[CURRENT_DAY][obj.type] = val ;
-
-        setReport((prev)=> ({
-            ...prev,
-        }))
+        setReport((prev)=> {
+            prev[CURRENT_DAY][obj.type] = val
+            return {...prev}
+        })
     }
 
     return (
